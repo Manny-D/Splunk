@@ -218,7 +218,7 @@ oh, that first event contains an unusual <b><i>filename</i></b>: <br>
 ### Question 5: <br>
 What is the first and last name of the poor innocent sap who was implicated in the metadata of the file that executed PowerShell Empire on the first victim's workstation? 
 
-<b>Note:</b> it was determined that the hash from the unzipped file (invoice.doc) is the following: <br>
+<b>Note:</b> it was determined that the SHA256 hash from the unzipped file (invoice.doc) is the following: <br>
 d8834aaa5ad6d8ee5ae71e042aca5cab960e73a6827e45339620359633608cf1
 
 <b>Thoughts:</b> <br>
@@ -235,9 +235,11 @@ Ryan Kovar
 Within the document, what kind of points is mentioned if you found the text?
 
 <b>Thoughts:</b> <br>
+We can check this on [Any.Run](https://app.any.run/tasks/15d17cd6-0eb6-4f52-968d-0f897fd6c3b3/) to see:
+<img width="1335" alt="Screenshot 2024-04-01 at 4 12 31 PM" src="https://github.com/Manny-D/Splunk/assets/99146530/c07118d0-479a-4264-a429-0f54d75a22d1">
 
 <b>Answer:</b> <br>
-
+CyberEastEgg
 
 <br>
 
