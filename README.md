@@ -20,7 +20,7 @@ We could initially use the following command <b><i>index="botsv2" amber</i></b> 
 
 To try and reduce the events and find Amber's IP, we can use the following: <br>
 <b><i>index="botsv2" sourcetype="pan:traffic" src_user="frothly\\amber.turing"</i></b> <br>
-and when viewing the INTERESTING FIELD <b><i>src</i></b> or <b><i>src_ip</i></b>, we get <b><i>10.0.2.101</i></b>.
+and when viewing the INTERESTING FIELDS <b><i>src</i></b> or <b><i>src_ip</i></b>, we get <b><i>10.0.2.101</i></b>.
 
 We can use the follwing search query to only return the site field while removing duplicate entries as well as displaying the results in a table: <br>
 <b><i>index=botsv2 10.0.2.101 sourcetype="stream:http" * beer * | dedup site | table site</i></b>
@@ -145,7 +145,7 @@ We need something that will filter them down. Since zip was mentioned, we can tr
 ![Screenshot 2024-04-01 at 2 52 57 PM](https://github.com/Manny-D/Splunk/assets/99146530/ff4ee76d-e595-496d-b61c-1a1130084a3a) <br>
 6 events returned! We can work with these!!
 
-There is one entry in the INTERESTING FIELD section named <b><i>attach_filename</i></b> that looks to be it:
+There is one entry in the INTERESTING FIELDS section named <b><i>attach_filename</i></b> that looks to be it:
 ![Screenshot 2024-04-01 at 2 56 02 PM](https://github.com/Manny-D/Splunk/assets/99146530/91df89ad-6e53-415f-88fe-2864fa6f4a96) <br>
 
 <b>Answer:</b> <br>
@@ -158,7 +158,7 @@ What is the password to open the zip file?
 
 <b>Thoughts:</b> <br>
 This is likely communicated by the text of an email. Of the 6 events, 5 have the <b><i>content_body</i></b> field. <br>
-After reviewing each one, it is contained in the 5 event: <br>
+After reviewing each one, it is contained in the 5th event: <br>
 ![Screenshot 2024-04-01 at 3 02 55 PM](https://github.com/Manny-D/Splunk/assets/99146530/00b36fe2-0aef-4533-aaec-901b0a58f8a4) <br>
 
 <b>Answer:</b> <br>
@@ -167,11 +167,19 @@ After reviewing each one, it is contained in the 5 event: <br>
 <br>
 
 ### Question 3: <br>
-The Taedonggang APT group encrypts most of their traffic with SSL. What is the "SSL Issuer" that they use for the majority of their traffic? Answer guidance: Copy the field exactly, including spaces.
+The Taedonggang APT group encrypts most of their traffic with SSL. What is the "SSL Issuer" that they use for the majority of their traffic?
 
 <b>Thoughts:</b> <br>
+From the 200 series questions, we learned somone was scanning from the following IP address: 45.77.65.211. <br>
+Also, since it's SSL, we can try filtering via tcp using: <br>
+<b><i>index="botsv2" sourcetype="stream:tcp" 45.77.65.211</i></b> <br>
+![Screenshot 2024-04-01 at 3 24 37 PM](https://github.com/Manny-D/Splunk/assets/99146530/3a83d340-91ec-4922-8919-f604d740473d) <br>
+
+That's a lot of results! In the INTERESTING FIELDS section under the <b><i>ssl_issuer</i></b> field, we have an winner: <br>
+![Screenshot 2024-04-01 at 3 29 26 PM](https://github.com/Manny-D/Splunk/assets/99146530/f6140f76-a021-45b3-acb3-59d9319381f4) <br>
 
 <b>Answer:</b> <br>
+C = US
 
 
 <br>
@@ -180,9 +188,30 @@ The Taedonggang APT group encrypts most of their traffic with SSL. What is the "
 What unusual file (for an American company) does winsys32.dll cause to be downloaded into the Frothly environment?
 
 <b>Thoughts:</b> <br>
+We can try filtering the logs with winsys32.dll via: <br>
+<b><i>index="botsv2" winsys32.dll</i></b> <br>
+![Screenshot 2024-04-01 at 3 40 58 PM](https://github.com/Manny-D/Splunk/assets/99146530/b2d8fef2-c08d-4dd0-ae01-31a28f484f79) <br>
+
+We get 7 events, of which all show this application being used: <br>
+![Screenshot 2024-04-01 at 3 41 07 PM](https://github.com/Manny-D/Splunk/assets/99146530/836e18ad-6e17-453b-8b52-005b8df120b0) <br>
+
+Let's try that as our sourcetype filter: <br>
+<b><i>index="botsv2" sourcetype="stream:ftp"</i></b> <br>
+![Screenshot 2024-04-01 at 3 50 16 PM](https://github.com/Manny-D/Splunk/assets/99146530/b39faa24-f69e-4d07-9409-665806f2971c) <br>
+
+That's a bit much. We need to filter it more. <br>
+Since it's FTP, we can try using typical commands like GET and RETURN (RETR): <br>
+<b><i>index="botsv2" sourcetype="stream:ftp" ("GET" OR "RETR")</i></b> <br>
+![Screenshot 2024-04-01 at 3 52 17 PM](https://github.com/Manny-D/Splunk/assets/99146530/6b807ce5-52bc-4527-83d1-d019565adcc7) <br>
+
+14 is manageable<br>
+![Screenshot 2024-04-01 at 3 52 17 PM](https://github.com/Manny-D/Splunk/assets/99146530/68f889f6-9206-470e-90d3-cfad6afdfd70) <br>
+
+oh, that first event contains an unusual <b><i>filename</i></b>: <br>
+![Screenshot 2024-04-01 at 3 52 59 PM](https://github.com/Manny-D/Splunk/assets/99146530/ae3d5cdd-074f-48e2-b788-3c268350cdae) <br>
 
 <b>Answer:</b> <br>
-
+나는_데이비드를_사랑한다.hwp
 
 <br>
 
