@@ -205,10 +205,7 @@ Since it's FTP, we can try using typical commands like GET and RETURN (RETR): <b
 <b><i>index="botsv2" sourcetype="stream:ftp" ("GET" OR "RETR")</i></b> <br>
 ![Screenshot 2024-04-01 at 3 52 17 PM](https://github.com/Manny-D/Splunk/assets/99146530/6b807ce5-52bc-4527-83d1-d019565adcc7) <br>
 
-14 is manageable<br>
-![Screenshot 2024-04-01 at 3 52 17 PM](https://github.com/Manny-D/Splunk/assets/99146530/68f889f6-9206-470e-90d3-cfad6afdfd70) <br>
-
-oh, that first event contains an unusual <b><i>filename</i></b>: <br>
+14 is manageable and the first event contains an unusual <b><i>filename</i></b>: <br>
 ![Screenshot 2024-04-01 at 3 52 59 PM](https://github.com/Manny-D/Splunk/assets/99146530/ae3d5cdd-074f-48e2-b788-3c268350cdae) <br>
 
 <b>Answer:</b> <br>
