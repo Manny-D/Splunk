@@ -165,3 +165,50 @@ After reviewing each one, it is contained in the 5 event: <br>
 912345678
 
 <br>
+
+### Question 3: <br>
+The Taedonggang APT group encrypts most of their traffic with SSL. What is the "SSL Issuer" that they use for the majority of their traffic? Answer guidance: Copy the field exactly, including spaces.
+
+<b>Thoughts:</b> <br>
+
+<b>Answer:</b> <br>
+
+
+<br>
+
+### Question 4: <br>
+What unusual file (for an American company) does winsys32.dll cause to be downloaded into the Frothly environment?
+
+<b>Thoughts:</b> <br>
+
+<b>Answer:</b> <br>
+
+
+<br>
+
+### Question 5: <br>
+What is the first and last name of the poor innocent sap who was implicated in the metadata of the file that executed PowerShell Empire on the first victim's workstation? Answer example: John Smith
+
+<b>Thoughts:</b> <br>
+
+<b>Answer:</b> <br>
+
+
+<br>
+
+### Question 6: <br>
+Within the document, what kind of points is mentioned if you found the text?
+
+<b>Thoughts:</b> <br>
+
+<b>Answer:</b> <br>
+
+
+<br>
+
+### Question 7: <br>
+To maintain persistence in the Frothly network, Taedonggang APT configured several Scheduled Tasks to beacon back to their C2 server. What single webpage is most contacted by these Scheduled Tasks? Answer example: index.php or images.html
+
+<b>Thoughts:</b> <br>
+
+<b>Answer:</b> <br>
