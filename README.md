@@ -78,7 +78,7 @@ Turing | aturing@froth.ly
 What is the CEO's email address?
 
 <b>Thoughts:</b> <br>
-This was determined from the second screenshot in Question 3. 
+See the second screenshot in Question 3. 
 
 <b>Answer:</b> <br>
 mberk@berkbeer.com
@@ -127,3 +127,28 @@ If we take the gibberish / Base64 encoded text and paste it into [CyberChef](htt
 
 <b>Answer:</b> <br>
 ambersthebest@yeastiebeastie.com
+
+<br>
+
+## Questions: 400 Series
+
+### Question 1: <br>
+A Federal law enforcement agency reports that Taedonggang often spear phishes its victims with zip files that have to be opened with a password. What is the name of the attachment sent to Frothly by a malicious Taedonggang actor?
+
+<b>Thoughts:</b> <br>
+From question 3 in the 100 series, we used the following query but it returned over 500k events: <br>
+<b><i>index=botsv2 sourcetype="stream:smtp"</i></b> <br>
+![Screenshot 2024-04-01 at 2 48 41 PM](https://github.com/Manny-D/Splunk/assets/99146530/d8439f1a-c742-48eb-86a7-59401373e6e7) <br>
+
+We need something that will filter them down. Since zip was mentioned, we can try filtering with that using: <br>
+<b><i>index="botsv2" sourcetype="stream:smtp" *.zip</i></b> <br>
+![Screenshot 2024-04-01 at 2 52 57 PM](https://github.com/Manny-D/Splunk/assets/99146530/ff4ee76d-e595-496d-b61c-1a1130084a3a) <br>
+6 events returned! We can work with these!!
+
+There is one entry in the INTERESTING FIELD section named <b><i>attach_filename</i></b> that looks to be it:
+![Screenshot 2024-04-01 at 2 56 02 PM](https://github.com/Manny-D/Splunk/assets/99146530/91df89ad-6e53-415f-88fe-2864fa6f4a96) <br>
+
+<b>Answer:</b> <br>
+invoice.zip
+
+<br>
