@@ -171,7 +171,7 @@ The Taedonggang APT group encrypts most of their traffic with SSL. What is the "
 
 <b>Thoughts:</b> <br>
 From the 200 series questions, we learned somone was scanning from the following IP address: 45.77.65.211. <br>
-Also, since it's SSL, we can try filtering via tcp using: <br>
+Also, since it's SSL, we can try filtering via tcp. Let combine both into the following query: <br>
 <b><i>index="botsv2" sourcetype="stream:tcp" 45.77.65.211</i></b> <br>
 ![Screenshot 2024-04-01 at 3 24 37 PM](https://github.com/Manny-D/Splunk/assets/99146530/3a83d340-91ec-4922-8919-f604d740473d) <br>
 
