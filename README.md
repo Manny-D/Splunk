@@ -216,12 +216,18 @@ oh, that first event contains an unusual <b><i>filename</i></b>: <br>
 <br>
 
 ### Question 5: <br>
-What is the first and last name of the poor innocent sap who was implicated in the metadata of the file that executed PowerShell Empire on the first victim's workstation? Answer example: John Smith
+What is the first and last name of the poor innocent sap who was implicated in the metadata of the file that executed PowerShell Empire on the first victim's workstation? 
+
+<b>Note:</b> it was determined that the hash from the unzipped file (invoice.doc) is the following: <br>
+d8834aaa5ad6d8ee5ae71e042aca5cab960e73a6827e45339620359633608cf1
 
 <b>Thoughts:</b> <br>
+Checking [VirusTotal](https://www.virustotal.com/gui/file/d8834aaa5ad6d8ee5ae71e042aca5cab960e73a6827e45339620359633608cf1/detection) to investigate. <br>
+User can be located via the Details tab -> Basic Properties -> Magic <br>
+![Screenshot 2024-04-01 at 4 05 06 PM](https://github.com/Manny-D/Splunk/assets/99146530/7c7acbdd-13a1-4525-a97f-876348e88721) <br>
 
 <b>Answer:</b> <br>
-
+Ryan Kovar
 
 <br>
 
