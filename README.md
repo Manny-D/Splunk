@@ -152,3 +152,16 @@ There is one entry in the INTERESTING FIELD section named <b><i>attach_filename<
 invoice.zip
 
 <br>
+
+### Question 2: <br>
+What is the password to open the zip file?
+
+<b>Thoughts:</b> <br>
+This is likely communicated by the text of an email. Of the 6 events, 5 have the <b><i>content_body</i></b> field. <br>
+After reviewing each one, it is contained in the 5 event: <br>
+![Screenshot 2024-04-01 at 3 02 55 PM](https://github.com/Manny-D/Splunk/assets/99146530/00b36fe2-0aef-4533-aaec-901b0a58f8a4) <br>
+
+<b>Answer:</b> <br>
+912345678
+
+<br>
