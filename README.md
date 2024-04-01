@@ -15,8 +15,8 @@ This Project is based on version 2 of the 2017 Boss of the SOC (BOTS) competitio
 Amber Turing was hoping for Frothly to be acquired by a potential competitor which fell through, but visited their website to find contact information for their executive team. What is the website domain that she visited?
 
 <b>Thoughts:</b> <br>
-We could initially use the following command <b><i>index="botsv2" amber</i></b> to find Amber, but over 56k events are returned. 
-![Screenshot 2024-04-01 at 11 06 16 AM](https://github.com/Manny-D/Splunk/assets/99146530/4d7daada-e978-484e-8801-d1b2fd374f38)
+We could initially use the following command <b><i>index="botsv2" amber</i></b> to find Amber, but over 56k events are returned. <br>
+![Screenshot 2024-04-01 at 11 06 16 AM](https://github.com/Manny-D/Splunk/assets/99146530/4d7daada-e978-484e-8801-d1b2fd374f38) <br>
 
 To reduce the number of events and find Amber's IP, we can use the following: <br>
 <b><i>index="botsv2" sourcetype="pan:traffic" src_user="frothly\\amber.turing"</i></b> <br>
