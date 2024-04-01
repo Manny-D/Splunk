@@ -18,7 +18,7 @@ Amber Turing was hoping for Frothly to be acquired by a potential competitor whi
 We could initially use the following command <b><i>index="botsv2" amber</i></b> to find Amber, but over 56k events are returned. 
 ![Screenshot 2024-04-01 at 11 06 16 AM](https://github.com/Manny-D/Splunk/assets/99146530/4d7daada-e978-484e-8801-d1b2fd374f38)
 
-To try and reduce the events and find Amber's IP, we can use the following: <br>
+To reduce the number of events and find Amber's IP, we can use the following: <br>
 <b><i>index="botsv2" sourcetype="pan:traffic" src_user="frothly\\amber.turing"</i></b> <br>
 and when viewing the INTERESTING FIELDS <b><i>src</i></b> or <b><i>src_ip</i></b>, we get <b><i>10.0.2.101</i></b>.
 
@@ -244,8 +244,23 @@ CyberEastEgg
 <br>
 
 ### Question 7: <br>
-To maintain persistence in the Frothly network, Taedonggang APT configured several Scheduled Tasks to beacon back to their C2 server. What single webpage is most contacted by these Scheduled Tasks? Answer example: index.php or images.html
+To maintain persistence in the Frothly network, Taedonggang APT configured several Scheduled Tasks to beacon back to their C2 server. What single webpage is most contacted by these Scheduled Tasks?
 
 <b>Thoughts:</b> <br>
+We can check on scheduled tasks using the following: <br> 
+<b><i>index="botsv2" schtasks.exe</i></b> <br>
+![Screenshot 2024-04-01 at 4 29 30 PM](https://github.com/Manny-D/Splunk/assets/99146530/0599726e-ee24-495c-871c-0152ffa7af24) <br>
+
+Skimmed through the 103 events. Noticed that 3 had Base64 encoding and were pointing to a specific registry folder: <br>
+![Screenshot 2024-04-01 at 4 49 07 PM](https://github.com/Manny-D/Splunk/assets/99146530/1f89d625-8b53-475b-9cb8-01f546853408) <br>
+
+Filtered the search using WinRegistry and that registry folder:
+<b><i>index="botsv2" source=WinRegistry "\\Software\\Microsoft\\Network"</i></b> <br>
+![Screenshot 2024-04-01 at 4 54 03 PM](https://github.com/Manny-D/Splunk/assets/99146530/64fb3363-b13a-4bec-9b13-3e25f877bc8e) <br>
+
+Of the 4 events, the 2nd and 3rd one decoded the following: <br>
+![Screenshot 2024-04-01 at 4 55 59 PM](https://github.com/Manny-D/Splunk/assets/99146530/61209097-e716-4d41-a3bf-109ac3f158f8) <br>
+
 
 <b>Answer:</b> <br>
+process.php
