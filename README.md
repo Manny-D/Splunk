@@ -1,20 +1,20 @@
 # Splunk
 
-![dummy](https://github.com/Manny-D/Splunk/assets/99146530/6a072a1c-7c98-46f7-8f12-887eee48f1a4)
+![splunk-botsv2-2017](https://github.com/Manny-D/Splunk/assets/99146530/9033aa06-a882-4708-b183-214922ad8090)
 
 ## Description 
-This Project is based on version 2 of the 2017 Boss of the SOC (BOTS) competition by Splunk. 
+This Project is based on version 2 of the 2017 Boss of the SOC (BOTS) competition by Splunk. In it, we will assume the persona of Alice Bluebird, an analyst who was recommended to Grace Hoppy at the Frothly beer company, to assist them with their recent issues.
 
-The BOTSv2 Dataset utilized was generated in August of 2017 by members of Splunk's Security Specialist team.
+<b>Note:</b> the BOTSv2 Dataset utilized was generated in August of 2017 by members of Splunk's Security Specialist team.
 
-In this exercise, we have assumed the persona of Alice Bluebird, an analyst who was recommended to Grace Hoppy at Frothly (a beer company) to assist them with their recent issues.
-
+<br>
 
 ## Questions: 100 Series
 
-1: Amber Turing was hoping for Frothly to be acquired by a potential competitor which fell through, but visited their website to find contact information for their executive team. What is the website domain that she visited?
+<b>Question 1:</b> <br>
+Amber Turing was hoping for Frothly to be acquired by a potential competitor which fell through, but visited their website to find contact information for their executive team. What is the website domain that she visited?
 
-Thoughts: 
+<b>Thoughts:</b> <br>
 We could initially use the following command <b><i>index="botsv2" amber</i></b> to find Amber, but over 56k events are returned. 
 ![Screenshot 2024-04-01 at 11 06 16 AM](https://github.com/Manny-D/Splunk/assets/99146530/4d7daada-e978-484e-8801-d1b2fd374f38)
 
@@ -27,5 +27,21 @@ We can use the follwing search query to only return the site field while removin
 
 ![Screenshot 2024-04-01 at 11 24 50 AM](https://github.com/Manny-D/Splunk/assets/99146530/ef3fc55e-92a5-40b9-8e4b-b7f72804e535)
 
-Answer: www.berkbeer.com
+<b>Answer:</b> <br>
+www.berkbeer.com
 
+<br>
+
+<b>Question 2:</b> <br>
+Amber found the executive contact information and sent him an email. What image file displayed the executive's contact information?
+
+<b>Thoughts:</b> <br>
+We can modify the query used in question 1, by adding the website found. Then parse through the results: <br>
+<b><i>index=botsv2 10.0.2.101 sourcetype="stream:http" berkbeer.com</i></b> <br>
+![Screenshot 2024-04-01 at 11 53 49 AM](https://github.com/Manny-D/Splunk/assets/99146530/69a3fbe3-7b7e-4ed9-84ee-ff72235b9c0a)
+
+It returns 12 events and by using the Search feature in the browser (using the word images), you can see one that stands out: <br>
+![Screenshot 2024-04-01 at 11 43 41 AM](https://github.com/Manny-D/Splunk/assets/99146530/03899f59-10cb-4fc2-b8d0-ecb7f2623232)
+
+<b>Answer:</b> <br>
+ceoberk.png
